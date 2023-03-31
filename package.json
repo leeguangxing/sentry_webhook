@@ -1,0 +1,23 @@
+{
+  "name": "webhook-server",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "koa": "^2.3.0",
+    "koa-bodyparser": "^4.2.0",
+    "koa-json": "^2.0.2",
+    "koa-onerror": "^3.1.0",
+    "koa-router": "^7.2.1",
+    "log4js": "^6.4.5",
+    "nodemailer": "^6.7.5",
+    "sqlite3": "^5.0.3",
+    "sqlstring": "^2.3.3"
+  },
+  "devDependencies": {
+    "eslint": ">=5.16.0",
+    "eslint-config-google": "^0.14.0"
+  }
+}

@@ -1,0 +1,8 @@
+version: "3.5"
+services:
+  webhook-server:
+    restart: always
+    build: /root/build/webhook-server
+    ports:
+      - target: 3001
+        published: 3001
