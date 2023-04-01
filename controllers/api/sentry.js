@@ -15,6 +15,7 @@ module.exports = async (ctx, next) => {
       event: {
         title,
         location,
+        environment,
         request: {url, fragment},
         user: {ip_address}},
     } = ctx.request.body;
@@ -24,6 +25,7 @@ module.exports = async (ctx, next) => {
       alertMarkDown({
         title: `${project_name} 异常告警`,
         text: `# ${project_name}  
+        【Env】${environment}  
         【Level】${level}  
         【Message】${title}  
         【Href】${url}  
