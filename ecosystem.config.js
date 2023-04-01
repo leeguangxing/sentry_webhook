@@ -1,14 +1,11 @@
 module.exports = {
   apps: [{
-    name: 'webhook-server',
+    name: 'sentry-webhook',
     script: 'app.js',
     instances: 1,
     autorestart: true,
-    watch: true,
+    watch: false,
     max_memory_restart: '100M',
-    // exec_mode: 'cluster',
-    wait_ready: false,
-    listen_timeout: 3000,
-    kill_timeout: 5000,
+    exec_mode: 'fork',
   }],
 };
