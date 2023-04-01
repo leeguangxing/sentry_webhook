@@ -54,24 +54,24 @@ app.on('error', function(err, ctx) {
   logger.error(err);
 });
 
-const shutDown = async () => {
-  try {
-  // 关闭 log4js
-    log4js.shutdown();
-  } catch (e) {
-    console.error('shut down error: ', e);
-  }
-};
+// const shutDown = async () => {
+//   try {
+//   // 关闭 log4js
+//     log4js.shutdown();
+//   } catch (e) {
+//     console.error('shut down error: ', e);
+//   }
+// };
 
-process.on('SIGINT', async () => {
-  await shutDown();
-});
+// process.on('SIGINT', async () => {
+//   await shutDown();
+// });
 
-process.on('message', async (msg) => {
-  if (msg === 'shutdown') {
-    await shutDown();
-  }
-});
+// process.on('message', async (msg) => {
+//   if (msg === 'shutdown') {
+//     await shutDown();
+//   }
+// });
 
 module.exports = app.listen(port, () => {
   console.log(`Listening on http://localhost:${port}`);

@@ -13,6 +13,7 @@
     "koa-router": "^7.2.1",
     "log4js": "^6.4.5",
     "nodemailer": "^6.7.5",
+    "sqlite3": "5.0.0",
     "sqlstring": "^2.3.3"
   },
   "devDependencies": {
