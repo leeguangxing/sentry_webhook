@@ -8,7 +8,7 @@ LABEL Description="This image is using PM2 as a layer between the container and 
 COPY . /var/web
 WORKDIR /var/web
 RUN ["yarn", "global", "add", "pm2"]
-RUN ["pm2", "install", "pm2-intercom"]
+RUN ["pm2", "install", "pm2-graceful-intercom"]
 RUN ["yarn", "install"]
 EXPOSE 3001
 CMD ["pm2-runtime", "start", "/var/web/ecosystem.config.js"]

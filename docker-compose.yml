@@ -1,6 +1,6 @@
 version: "3.5"
 services:
-  webhook-server:
+  sentry-webhook:
     restart: always
     build: /root/build/webhook-server
     ports:
