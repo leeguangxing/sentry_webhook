@@ -2,7 +2,7 @@ version: "3.5"
 services:
   sentry-webhook:
     restart: always
-    build: /root/build/webhook-server
+    build: /home/devops/service/sentry_webhook
     ports:
       - target: 3001
         published: 3001
