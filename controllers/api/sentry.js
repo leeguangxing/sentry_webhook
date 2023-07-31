@@ -2,6 +2,7 @@
 /* eslint-disable camelcase */
 // notice
 const {alertMarkDown} = require('../../lib/alertIntegration/dingtalk');
+const {checkMsgWhiteList} = require('../../util/index')
 
 module.exports = async (ctx, next) => {
   try {
@@ -23,19 +24,22 @@ module.exports = async (ctx, next) => {
         user: {ip_address}},
     } = ctx.request.body;
 
-    await alertMarkDown({
-      title: `${project_name} 异常告警`,
-      text: [`# ${project_name}`,
-        `【Env】${environment}`,
-        `【Level】${level}`,
-        `【Message】${title}`,
-        `【Href】${url}`,
-        `【Path】${fragment}`,
-        `【Source】${location}`,
-        `【User IP】${ip_address}`,
-        `【Issue】[点击这里](${path})`].join('\n\n'),
-      access_token,
-    });
+		// 不在白名单的信息才发送
+		if(checkMsgWhiteList(title)) {
+			await alertMarkDown({
+				title: `${project_name} 异常告警`,
+				text: [`# ${project_name}`,
+					`【Env】${environment}`,
+					`【Level】${level}`,
+					`【Message】${title}`,
+					`【Href】${url}`,
+					`【Path】${fragment}`,
+					`【Source】${location}`,
+					`【User IP】${ip_address}`,
+					`【Issue】[点击这里](${path})`].join('\n\n'),
+				access_token,
+			});
+		}
   } catch (e) {
     ctx.logger.error(e);
   }
