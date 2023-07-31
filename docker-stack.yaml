@@ -15,9 +15,6 @@ services:
       update_config:
         parallelism: 1
         failure_action: rollback
-      placement:
-        constraints:
-          - 'node.role == leader'
       restart_policy:
         condition: on-failure
         delay: 5s
