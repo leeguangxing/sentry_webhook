@@ -2,7 +2,7 @@ version: "3.5"
 networks:
   web_network:
 services:
-  translate-web-service:
+  sentry-webhook:
     image: leeguangxing/sentry-webhook:latest
     networks:
       - web_network
