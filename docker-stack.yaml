@@ -1,0 +1,25 @@
+version: "3.5"
+networks:
+  web_network:
+services:
+  translate-web-service:
+    image: leeguangxing/sentry-webhook:latest
+    networks:
+      - web_network
+    ports:
+      - target: 3001
+        published: 3001
+        mode: host
+    deploy:
+      replicas: 1
+      update_config:
+        parallelism: 1
+        failure_action: rollback
+      placement:
+        constraints:
+          - 'node.role == leader'
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 3s
